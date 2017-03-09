@@ -68,5 +68,11 @@ namespace BevzukFiltres
             Filtres filter = new BlurFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void гауссаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GaussianFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
