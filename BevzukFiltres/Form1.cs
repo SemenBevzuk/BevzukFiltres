@@ -13,6 +13,7 @@ namespace BevzukFiltres
     public partial class Form1 : Form
     {
         Bitmap image;
+        Stack<Bitmap> BitmapStack = new Stack<Bitmap>();
         public Form1()
         {
             InitializeComponent();
@@ -38,9 +39,18 @@ namespace BevzukFiltres
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Bitmap newImage = ((Filtres)e.Argument).ProcessImage(image, backgroundWorker1);
-            if (backgroundWorker1.CancellationPending != true)
-                image = newImage;
+            try
+            {
+                BitmapStack.Push((Bitmap)pictureBox1.Image);
+                Bitmap newImage = ((Filtres)e.Argument).ProcessImage(image, backgroundWorker1);
+                if (backgroundWorker1.CancellationPending != true)
+                    image = newImage;
+            }
+            catch (Exception)
+            {
+                 MessageBox.Show("Ошибка. Нет ихображения.");
+            }
+           
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -133,6 +143,36 @@ namespace BevzukFiltres
         {
             Filtres filter = new GrayWorldFilter();
             backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void сохранитьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap saveImage = (Bitmap) pictureBox1.Image;
+                SaveFileDialog dialog = new SaveFileDialog();
+                dialog.DefaultExt = "bmp";
+                dialog.Filter = "image files|*.bmp;*.jpeg;*.jpg;*.png";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                    saveImage.Save(dialog.FileName, System.Drawing.Imaging.ImageFormat.Bmp);
+            }
+            catch (Exception)
+            {
+                 MessageBox.Show("Ошибка. Нет ихображения.");
+            }
+        }
+
+        private void отменаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Bitmap img = BitmapStack.Peek();
+                pictureBox1.Image = img;
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Стек изображений пуст.");
+            }
         }
     }
 }

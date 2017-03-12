@@ -19,8 +19,8 @@ namespace BevzukFiltres
             Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_1 = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_2 = new Bitmap(sourceImage.Width, sourceImage.Height);
-            tempImage_1 = Dilation(sourceImage);
-            tempImage_2 = Erosion(sourceImage);
+            tempImage_1 = Dilation(sourceImage, worker);
+            tempImage_2 = Erosion(sourceImage, worker);
             Color col;
             int R, G, B;
             for (int i = 0; i < sourceImage.Width; i++)

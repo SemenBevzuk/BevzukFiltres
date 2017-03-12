@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Drawing;
@@ -41,7 +42,7 @@ namespace BevzukFiltres
             }
         }
 
-        public Bitmap Dilation(Bitmap sourceImage)//+
+        public Bitmap Dilation(Bitmap sourceImage, BackgroundWorker worker)//+
         {
             
             int width = sourceImage.Width;
@@ -52,6 +53,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight/2; y < height - structHeight/2; y++)
             {
+                worker.ReportProgress((int)((float)y/sourceImage.Width*100));
                 for (int x = structWidth/2; x < width - structWidth/2; x++)
                 {
                     int maxR = 0;
@@ -81,7 +83,7 @@ namespace BevzukFiltres
             return res;
         }
 
-        public Bitmap Erosion(Bitmap sourceImage)//-
+        public Bitmap Erosion(Bitmap sourceImage,BackgroundWorker worker)//-
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;
@@ -91,6 +93,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight/2; y < height - structHeight/2; y++)
             {
+                worker.ReportProgress((int)((float)y/sourceImage.Width*100));
                 for (int x = structWidth/2; x < width - structWidth/2; x++)
                 {
 
@@ -121,26 +124,26 @@ namespace BevzukFiltres
             return res;
         }
 
-        public Bitmap Opening(Bitmap sourceImage)
+        public Bitmap Opening(Bitmap sourceImage, BackgroundWorker worker)
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;
             Bitmap res = new Bitmap(width,height);
 
-            res = Erosion(res);
-            res = Dilation(res);
+            res = Erosion(res, worker);
+            res = Dilation(res, worker);
 
             return res;
         }
 
-        public Bitmap Сlosing(Bitmap sourceImage)
+        public Bitmap Сlosing(Bitmap sourceImage, BackgroundWorker worker)
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;
             Bitmap res = new Bitmap(width,height);
 
-            res = Dilation(res);
-            res = Erosion(res);
+            res = Dilation(res, worker);
+            res = Erosion(res, worker);
 
             return res;
         }
