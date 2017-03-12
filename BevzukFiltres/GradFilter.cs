@@ -14,7 +14,7 @@ namespace BevzukFiltres
             : base(maskType)
         {
         }
-        public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
+        public override Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
         {
             Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_1 = new Bitmap(sourceImage.Width, sourceImage.Height);

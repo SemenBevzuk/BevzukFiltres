@@ -8,7 +8,7 @@ namespace BevzukFiltres
 {
     class TransferringFilter:Filtres
     {
-        protected override Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        protected override Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
             int delta = 100;
             Color resultColor;

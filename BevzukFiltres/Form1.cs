@@ -38,7 +38,7 @@ namespace BevzukFiltres
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            Bitmap newImage = ((Filtres)e.Argument).processImage(image, backgroundWorker1);
+            Bitmap newImage = ((Filtres)e.Argument).ProcessImage(image, backgroundWorker1);
             if (backgroundWorker1.CancellationPending != true)
                 image = newImage;
         }

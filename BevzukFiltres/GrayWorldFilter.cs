@@ -36,30 +36,18 @@ namespace BevzukFiltres
             Avg = (avgR + avgB + avgG) /3;
         }
 
-        protected override Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        protected override void BeforeProcessImage(Bitmap sourceImage)
+        {
+            FindAvg(sourceImage);
+        }
+
+        protected override Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
             int R = Clamp((int)(sourceImage.GetPixel(x, y).R*Avg/avgR),0,255);
             int G = Clamp((int)(sourceImage.GetPixel(x, y).G*Avg/avgG),0,255);
             int B = Clamp((int)(sourceImage.GetPixel(x, y).B*Avg/avgB),0,255);
             Color c = Color.FromArgb(R,G,B);
             return c;
-        }
-
-        public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
-        {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-            FindAvg(sourceImage);
-            for (int i = 0; i < sourceImage.Width; i++)
-            {
-                worker.ReportProgress((int)((float)i/resultImage.Width*100));
-                if (worker.CancellationPending)
-                    return null;
-                for (int j = 0; j < sourceImage.Height; j++)
-                {
-                    resultImage.SetPixel(i, j, calculatePixelColor(sourceImage, i, j));
-                }
-            }
-            return resultImage;
         }
     }
 }

@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlurFilter.cs" />
-    <Compile Include="ColorConverter.cs" />
     <Compile Include="DefinitionFilter.cs" />
     <Compile Include="Filtres.cs" />
     <Compile Include="Form1.cs">

@@ -7,7 +7,7 @@ namespace BevzukFiltres
 {
     class InvertFilter:Filtres
     {
-        protected override System.Drawing.Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        protected override System.Drawing.Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
             Color sourceColor = sourceImage.GetPixel(x, y);
             Color resultColor = Color.FromArgb(255 - sourceColor.R,

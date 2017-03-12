@@ -8,9 +8,8 @@ namespace BevzukFiltres
 {
     class GlassFilter:Filtres
     {
-        protected override System.Drawing.Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        protected override System.Drawing.Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
-            Random rand = new Random();
             Color sourceColor = sourceImage.GetPixel(x, y);
             Color resultColor = sourceColor;
             if (x>5 && x<sourceImage.Width-5 &&

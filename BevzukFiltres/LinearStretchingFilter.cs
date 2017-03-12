@@ -40,7 +40,7 @@ namespace BevzukFiltres
             }
         }
 
-        protected override Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        protected override Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
             int R = (sourceImage.GetPixel(x,y).R-minR) * (255 / (maxR - minR));
             int G = (sourceImage.GetPixel(x,y).G-minG) * (255 / (maxG - minG));
@@ -49,21 +49,9 @@ namespace BevzukFiltres
             return c;
         }
 
-        public override Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
+        protected override void BeforeProcessImage(Bitmap sourceImage)
         {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             FindMaxMin(sourceImage);
-            for (int i = 0; i < sourceImage.Width; i++)
-            {
-                worker.ReportProgress((int)((float)i / resultImage.Width * 100));
-                if (worker.CancellationPending)
-                    return null;
-                for (int j = 0; j < sourceImage.Height; j++)
-                {
-                    resultImage.SetPixel(i, j, calculatePixelColor(sourceImage, i, j));
-                }
-            }
-            return resultImage;
         }
     }
 }

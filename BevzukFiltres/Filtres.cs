@@ -9,7 +9,8 @@ namespace BevzukFiltres
 {
     abstract class Filtres
     {
-        protected virtual Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        public Random rand = new Random();
+        protected virtual Color CalculatePixelColor(Bitmap sourceImage, int x, int y)
         {
             return Color.Black;
         }
@@ -22,9 +23,11 @@ namespace BevzukFiltres
                 return max;
             return value;
         }  
-        public virtual Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
+        public virtual Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
         {
+            BeforeProcessImage(sourceImage);
             Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
+            //Bitmap resultImage = new Bitmap(sourceImage);
             for (int i = 0; i < sourceImage.Width; i++)
             {
                 worker.ReportProgress((int)((float)i/resultImage.Width*100));
@@ -32,10 +35,14 @@ namespace BevzukFiltres
                     return null;
                 for (int j = 0; j < sourceImage.Height; j++)
                 {
-                    resultImage.SetPixel(i, j, calculatePixelColor(sourceImage, i, j));
+                    resultImage.SetPixel(i, j, CalculatePixelColor(sourceImage, i, j));
                 }
             }
             return resultImage;
+        }
+
+        protected virtual void BeforeProcessImage(Bitmap sourceImage)
+        {
         }
     }
 }
