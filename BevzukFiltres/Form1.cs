@@ -74,5 +74,35 @@ namespace BevzukFiltres
             Filtres filter = new GaussianFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void чернобелоеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GrayScaleFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void переносToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new TransferringFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void стеклоToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GlassFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void motionBlurToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new MotionBlurFilter(9);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new DefinitionFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
