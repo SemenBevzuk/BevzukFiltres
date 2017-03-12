@@ -24,7 +24,7 @@ namespace BevzukFiltres
             dialog.Filter = "image files|*.jpg;*.jpeg;*.png";
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                image = new Bitmap(dialog.FileName); 
+                image = new Bitmap(dialog.FileName);
                 pictureBox1.Image = image;
                 pictureBox1.Refresh();
             }
@@ -102,6 +102,24 @@ namespace BevzukFiltres
         private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filtres filter = new DefinitionFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крестикToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GradFilter(MaskType.Cross);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадратToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GradFilter(MaskType.Square);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void медианныйToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new MedianFilter(3);
             backgroundWorker1.RunWorkerAsync(filter);
         }
     }

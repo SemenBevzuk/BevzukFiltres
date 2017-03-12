@@ -14,7 +14,7 @@ namespace BevzukFiltres
         {
             this.kernel = kernel;
         }
-        protected override System.Drawing.Color calculatePixelColor(System.Drawing.Bitmap sourceImage, int x, int y)
+        protected override Color calculatePixelColor(System.Drawing.Bitmap sourceImage, int x, int y)
         {
             int radiusX = kernel.GetLength(0) / 2;
             int radiusY = kernel.GetLength(1) / 2;

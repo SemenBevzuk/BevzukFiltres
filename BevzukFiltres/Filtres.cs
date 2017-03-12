@@ -9,7 +9,10 @@ namespace BevzukFiltres
 {
     abstract class Filtres
     {
-        protected abstract Color calculatePixelColor(Bitmap sourceImage, int x, int y);
+        protected virtual Color calculatePixelColor(Bitmap sourceImage, int x, int y)
+        {
+            return Color.Black;
+        }
 
         public int Clamp(int value, int min, int max)
         {
@@ -19,7 +22,7 @@ namespace BevzukFiltres
                 return max;
             return value;
         }  
-        public Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
+        public virtual Bitmap processImage(Bitmap sourceImage, BackgroundWorker worker)
         {
             Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             for (int i = 0; i < sourceImage.Width; i++)
@@ -32,8 +35,7 @@ namespace BevzukFiltres
                     resultImage.SetPixel(i, j, calculatePixelColor(sourceImage, i, j));
                 }
             }
-
-                return resultImage;
+            return resultImage;
         }
     }
 }
