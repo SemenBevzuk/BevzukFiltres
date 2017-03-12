@@ -122,5 +122,17 @@ namespace BevzukFiltres
             Filtres filter = new MedianFilter(3);
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void линейноеРастяжениеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new LinearStretchingFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void серыйМирToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GrayWorldFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }
