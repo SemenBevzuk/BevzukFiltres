@@ -160,8 +160,9 @@ namespace BevzukFiltres
         {
             try
             {
-                Bitmap img = BitmapStack.Peek();
+                Bitmap img = BitmapStack.Pop();
                 pictureBox1.Image = img;
+                pictureBox1.Refresh();
             }
             catch (Exception)
             {
@@ -208,6 +209,18 @@ namespace BevzukFiltres
         private void прюиттаToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filtres filter = new PruittaFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void волна1ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new WaveOneFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void волна2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new WaveTwoFilter();
             backgroundWorker1.RunWorkerAsync(filter);
         }
     }

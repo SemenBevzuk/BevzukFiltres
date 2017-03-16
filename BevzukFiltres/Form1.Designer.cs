@@ -62,6 +62,8 @@
             this.собеляToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.щарраToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.прюиттаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.волна1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.волна2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -134,7 +136,9 @@
             this.переносToolStripMenuItem,
             this.стеклоToolStripMenuItem,
             this.сепияToolStripMenuItem,
-            this.яркостьToolStripMenuItem});
+            this.яркостьToolStripMenuItem,
+            this.волна1ToolStripMenuItem,
+            this.волна2ToolStripMenuItem});
             this.точечныеToolStripMenuItem.Name = "точечныеToolStripMenuItem";
             this.точечныеToolStripMenuItem.Size = new System.Drawing.Size(278, 30);
             this.точечныеToolStripMenuItem.Text = "Точечные";
@@ -347,6 +351,20 @@
             this.прюиттаToolStripMenuItem.Text = "Прюитта";
             this.прюиттаToolStripMenuItem.Click += new System.EventHandler(this.прюиттаToolStripMenuItem_Click);
             // 
+            // волна1ToolStripMenuItem
+            // 
+            this.волна1ToolStripMenuItem.Name = "волна1ToolStripMenuItem";
+            this.волна1ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.волна1ToolStripMenuItem.Text = "Волна №1";
+            this.волна1ToolStripMenuItem.Click += new System.EventHandler(this.волна1ToolStripMenuItem_Click);
+            // 
+            // волна2ToolStripMenuItem
+            // 
+            this.волна2ToolStripMenuItem.Name = "волна2ToolStripMenuItem";
+            this.волна2ToolStripMenuItem.Size = new System.Drawing.Size(211, 30);
+            this.волна2ToolStripMenuItem.Text = "Волна №2";
+            this.волна2ToolStripMenuItem.Click += new System.EventHandler(this.волна2ToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -405,6 +423,8 @@
         private System.Windows.Forms.ToolStripMenuItem собеляToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem щарраToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem прюиттаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem волна1ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem волна2ToolStripMenuItem;
     }
 }
 

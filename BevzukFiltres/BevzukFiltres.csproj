@@ -73,6 +73,8 @@
     <Compile Include="ShcharrFilter.cs" />
     <Compile Include="SobelFilter.cs" />
     <Compile Include="TransferringFilter.cs" />
+    <Compile Include="WaveOneFilter.cs" />
+    <Compile Include="WaveTwoFilter.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
