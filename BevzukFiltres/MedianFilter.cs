@@ -29,14 +29,25 @@ namespace BevzukFiltres
             for(int l = -radiusY; l<=radiusY; l++)
                 for(int k = - radiusX; k<=radiusX; k++)
                 {
-                    int idX = Clamp(x + k, 0, sourceImage.Width - 1);
-                    int idY = Clamp(y + l, 0, sourceImage.Height - 1);
+                    int idX = Clamp(x + k, radiusX, sourceImage.Width - radiusX);
+                    int idY = Clamp(y + l, radiusY, sourceImage.Height - radiusY);
                     Color c = sourceImage.GetPixel(idX, idY);
                     cR[g] = c.R;
                     cG[g] = c.G;
                     cB[g] = c.B;
                     g++;
                 }
+             //for(int l = x-radiusX; l<x+radiusX+1; l++)
+             //   for(int k = y - radiusY; k<y+radiusY+1; k++)
+             //   {
+             //       //int idX = Clamp(x + k, radiusX, sourceImage.Width - radiusX);
+             //       //int idY = Clamp(y + l, radiusY, sourceImage.Height - radiusY);
+             //       Color c = sourceImage.GetPixel(l, k);
+             //       cR[g] = c.R;
+             //       cG[g] = c.G;
+             //       cB[g] = c.B;
+             //       g++;
+             //   }
             quickSort(cR, 0, n-1);
             quickSort(cG, 0, n-1);
             quickSort(cB, 0, n-1);

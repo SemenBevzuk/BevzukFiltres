@@ -48,9 +48,9 @@ namespace BevzukFiltres
             }
             catch (Exception)
             {
-                 MessageBox.Show("Ошибка. Нет ихображения.");
+                MessageBox.Show("Ошибка. Нет изображения.");
             }
-           
+
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, System.ComponentModel.ProgressChangedEventArgs e)
@@ -109,12 +109,6 @@ namespace BevzukFiltres
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
-        private void резкостьToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            Filtres filter = new DefinitionFilter();
-            backgroundWorker1.RunWorkerAsync(filter);
-        }
-
         private void крестикToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filtres filter = new GradFilter(MaskType.Cross);
@@ -129,7 +123,7 @@ namespace BevzukFiltres
 
         private void медианныйToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Filtres filter = new MedianFilter(3);
+            Filtres filter = new MedianFilter(5);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -149,7 +143,7 @@ namespace BevzukFiltres
         {
             try
             {
-                Bitmap saveImage = (Bitmap) pictureBox1.Image;
+                Bitmap saveImage = (Bitmap)pictureBox1.Image;
                 SaveFileDialog dialog = new SaveFileDialog();
                 dialog.DefaultExt = "bmp";
                 dialog.Filter = "image files|*.bmp;*.jpeg;*.jpg;*.png";
@@ -158,7 +152,7 @@ namespace BevzukFiltres
             }
             catch (Exception)
             {
-                 MessageBox.Show("Ошибка. Нет ихображения.");
+                MessageBox.Show("Ошибка. Нет изображения.");
             }
         }
 
@@ -173,6 +167,48 @@ namespace BevzukFiltres
             {
                 MessageBox.Show("Стек изображений пуст.");
             }
+        }
+
+        private void сепияToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new SepiaFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void яркостьToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new BrightnessFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ядро5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new DefinitionFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void ядро9ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new AcutanceFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void собеляToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new SobelFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void щарраToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ShcharrFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void прюиттаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new PruittaFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
         }
     }
 }
