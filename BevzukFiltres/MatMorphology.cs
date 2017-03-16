@@ -66,7 +66,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight / 2; y < height - structHeight / 2; y++)
             {
-                //worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
+                worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
                     int maxR = 0;
@@ -106,7 +106,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight / 2; y < height - structHeight / 2; y++)
             {
-                //worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
+                worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
 
@@ -137,7 +137,7 @@ namespace BevzukFiltres
             return res;
         }
 
-        public Bitmap Opening(Bitmap sourceImage, BackgroundWorker worker)
+        public Bitmap Opening(Bitmap sourceImage,  BackgroundWorker worker)
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;
@@ -149,7 +149,7 @@ namespace BevzukFiltres
             return res;
         }
 
-        public Bitmap Сlosing(Bitmap sourceImage, BackgroundWorker worker)
+        public Bitmap Closing(Bitmap sourceImage,  BackgroundWorker worker)
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;

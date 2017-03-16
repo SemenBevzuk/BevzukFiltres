@@ -265,5 +265,77 @@ namespace BevzukFiltres
             Filtres filter = new BlackHatFilter(MaskType.Square5);
             backgroundWorker1.RunWorkerAsync(filter);
         }
+
+        private void крест3х3ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new DilationFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new DilationFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new DilationFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крест3х3ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ErosionFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ErosionFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ErosionFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крест3х3ToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new OpeningFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new OpeningFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new OpeningFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крест3х3ToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ClosingFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ClosingFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new ClosingFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
     }
 }

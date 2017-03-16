@@ -20,7 +20,7 @@ namespace BevzukFiltres
             Bitmap tempImage_1 = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_2 = new Bitmap(sourceImage.Width, sourceImage.Height);
             worker.ReportProgress((int) (1));
-            tempImage_2 = Сlosing(sourceImage, worker);
+            tempImage_2 = Closing(sourceImage, worker);
             tempImage_1 = sourceImage;
             Color col;
             int R, G, B;
