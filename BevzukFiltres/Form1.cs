@@ -162,6 +162,7 @@ namespace BevzukFiltres
             {
                 Bitmap img = BitmapStack.Pop();
                 pictureBox1.Image = img;
+                image = img;
                 pictureBox1.Refresh();
             }
             catch (Exception)

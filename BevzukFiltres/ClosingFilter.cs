@@ -16,8 +16,7 @@ namespace BevzukFiltres
 
         public override Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
         {
-            Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
-            resultImage = Closing(sourceImage,worker);
+            Bitmap resultImage = Closing(sourceImage,worker);
             return resultImage;
         }
     }

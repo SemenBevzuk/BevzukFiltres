@@ -20,8 +20,7 @@ namespace BevzukFiltres
             Bitmap tempImage_1 = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_2 = new Bitmap(sourceImage.Width, sourceImage.Height);
             worker.ReportProgress((int) (1));
-            tempImage_1 = Opening(sourceImage, worker);
-            tempImage_2 = sourceImage;
+            tempImage_1 = Closing(sourceImage, worker);
             Color col;
             int R, G, B;
             for (int i = 0; i < sourceImage.Width; i++)
@@ -29,9 +28,9 @@ namespace BevzukFiltres
                 worker.ReportProgress((int)((float)i/resultImage.Width*100));
                 for (int j = 0; j < sourceImage.Height; j++)
                 {
-                    R = tempImage_1.GetPixel(i, j).R - tempImage_2.GetPixel(i, j).R;
-                    G = tempImage_1.GetPixel(i, j).G - tempImage_2.GetPixel(i, j).G;
-                    B = tempImage_1.GetPixel(i, j).B - tempImage_2.GetPixel(i, j).B;
+                    R = tempImage_1.GetPixel(i, j).R - sourceImage.GetPixel(i, j).R;
+                    G = tempImage_1.GetPixel(i, j).G - sourceImage.GetPixel(i, j).G;
+                    B = tempImage_1.GetPixel(i, j).B - sourceImage.GetPixel(i, j).B;
                     R = Clamp(R, 0, 255);
                     G = Clamp(G, 0, 255);
                     B = Clamp(B, 0, 255);

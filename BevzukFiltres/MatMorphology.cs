@@ -60,7 +60,7 @@ namespace BevzukFiltres
 
             int width = sourceImage.Width;
             int height = sourceImage.Height;
-            Bitmap res = new Bitmap(width, height);
+            Bitmap res = new Bitmap(sourceImage);
             int structWidth = structElem.GetLength(0);
             int structHeight = structElem.GetLength(1);
 
@@ -69,9 +69,9 @@ namespace BevzukFiltres
                 worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
-                    int maxR = 0;
-                    int maxG = 0;
-                    int maxB = 0;
+                    int maxR = sourceImage.GetPixel(x, y).R;;
+                    int maxG = sourceImage.GetPixel(x, y).G;;
+                    int maxB = sourceImage.GetPixel(x, y).B;;
                     int k = 0;
                     for (int j = -structHeight / 2; j <= structHeight / 2; j++)
                     {
@@ -100,7 +100,7 @@ namespace BevzukFiltres
         {
             int width = sourceImage.Width;
             int height = sourceImage.Height;
-            Bitmap res = new Bitmap(width, height);
+            Bitmap res = new Bitmap(sourceImage);
             int structWidth = structElem.GetLength(0);
             int structHeight = structElem.GetLength(1);
 
@@ -110,9 +110,9 @@ namespace BevzukFiltres
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
 
-                    int minR = 255;
-                    int minG = 255;
-                    int minB = 255;
+                    int minR = sourceImage.GetPixel(x, y).R;
+                    int minG = sourceImage.GetPixel(x, y).G;
+                    int minB = sourceImage.GetPixel(x, y).B;
 
                     int k = 0;
                     for (int j = -structHeight / 2; j <= structHeight / 2; j++)
@@ -130,7 +130,7 @@ namespace BevzukFiltres
                         }
                         k++;
                     }
-                    Color col = Color.FromArgb(minR, minB, minG);
+                    Color col = Color.FromArgb(minR, minG, minB);
                     res.SetPixel(x, y, col);
                 }
             }
@@ -139,25 +139,16 @@ namespace BevzukFiltres
 
         public Bitmap Opening(Bitmap sourceImage,  BackgroundWorker worker)
         {
-            int width = sourceImage.Width;
-            int height = sourceImage.Height;
-            Bitmap res = new Bitmap(width, height);
-
+            Bitmap res  = new Bitmap(sourceImage);
             res = Erosion(sourceImage, worker);
-            res = Dilation(res, worker);
-
+            res = Dilation(sourceImage, worker);
             return res;
         }
 
         public Bitmap Closing(Bitmap sourceImage,  BackgroundWorker worker)
         {
-            int width = sourceImage.Width;
-            int height = sourceImage.Height;
-            Bitmap res = new Bitmap(width, height);
-
-            res = Dilation(sourceImage, worker);
+            Bitmap res = Dilation(sourceImage, worker);
             res = Erosion(res, worker);
-
             return res;
         }
     }
