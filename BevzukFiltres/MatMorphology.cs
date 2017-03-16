@@ -8,8 +8,9 @@ namespace BevzukFiltres
 {
     public enum MaskType
     {
-        Square,
-        Cross
+        Square3,
+        Square5,
+        Cross3
     }
     abstract class MatMorphology : Filtres
     {
@@ -19,7 +20,7 @@ namespace BevzukFiltres
         {
             switch (maskType)
             {
-                case MaskType.Square:
+                case MaskType.Square3:
                     {
                         structElem = new bool[,]
                     {
@@ -29,13 +30,25 @@ namespace BevzukFiltres
                     };
                         break;
                     }
-                case MaskType.Cross:
+                case MaskType.Cross3:
                     {
                         structElem = new bool[,]
                     {
                         {false, true, false},
                         {true, true, true},
                         {false, true, false},
+                    };
+                        break;
+                    }
+                case MaskType.Square5:
+                    {
+                        structElem = new bool[,]
+                    {
+                        {true, true, true, true, true},
+                        {true, true, true, true, true},
+                        {true, true, true, true, true},
+                        {true, true, true, true, true},
+                        {true, true, true, true, true}
                     };
                         break;
                     }
@@ -53,7 +66,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight / 2; y < height - structHeight / 2; y++)
             {
-                worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
+                //worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
                     int maxR = 0;
@@ -93,7 +106,7 @@ namespace BevzukFiltres
 
             for (int y = structHeight / 2; y < height - structHeight / 2; y++)
             {
-                worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
+                //worker.ReportProgress((int)((float)y / sourceImage.Width * 100));
                 for (int x = structWidth / 2; x < width - structWidth / 2; x++)
                 {
 
@@ -130,7 +143,7 @@ namespace BevzukFiltres
             int height = sourceImage.Height;
             Bitmap res = new Bitmap(width, height);
 
-            res = Erosion(res, worker);
+            res = Erosion(sourceImage, worker);
             res = Dilation(res, worker);
 
             return res;
@@ -142,7 +155,7 @@ namespace BevzukFiltres
             int height = sourceImage.Height;
             Bitmap res = new Bitmap(width, height);
 
-            res = Dilation(res, worker);
+            res = Dilation(sourceImage, worker);
             res = Erosion(res, worker);
 
             return res;

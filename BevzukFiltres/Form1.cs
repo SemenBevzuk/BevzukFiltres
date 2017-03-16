@@ -111,13 +111,13 @@ namespace BevzukFiltres
 
         private void крестикToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Filtres filter = new GradFilter(MaskType.Cross);
+            Filtres filter = new GradFilter(MaskType.Cross3);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
         private void квадратToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Filtres filter = new GradFilter(MaskType.Square);
+            Filtres filter = new GradFilter(MaskType.Square3);
             backgroundWorker1.RunWorkerAsync(filter);
         }
 
@@ -221,6 +221,48 @@ namespace BevzukFiltres
         private void волна2ToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Filtres filter = new WaveTwoFilter();
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5x5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new GradFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крест3х3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new TopHatFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new TopHatFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new TopHatFilter(MaskType.Square5);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void крест3х3ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new BlackHatFilter(MaskType.Cross3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат3х3ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new BlackHatFilter(MaskType.Square3);
+            backgroundWorker1.RunWorkerAsync(filter);
+        }
+
+        private void квадрат5х5ToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Filtres filter = new BlackHatFilter(MaskType.Square5);
             backgroundWorker1.RunWorkerAsync(filter);
         }
     }

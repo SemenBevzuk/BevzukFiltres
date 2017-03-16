@@ -4,30 +4,29 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Drawing;
-using System.Globalization;
 
 namespace BevzukFiltres
 {
-    class GradFilter : MatMorphology
+    class BlackHatFilter:MatMorphology
     {
-        public GradFilter(MaskType maskType)
+        public BlackHatFilter(MaskType maskType)
             : base(maskType)
         {
         }
+
         public override Bitmap ProcessImage(Bitmap sourceImage, BackgroundWorker worker)
         {
             Bitmap resultImage = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_1 = new Bitmap(sourceImage.Width, sourceImage.Height);
             Bitmap tempImage_2 = new Bitmap(sourceImage.Width, sourceImage.Height);
-            tempImage_1 = Dilation(sourceImage, worker);
-            worker.ReportProgress((int)(33));
-            tempImage_2 = Erosion(sourceImage, worker);
-             worker.ReportProgress((int)(66));
+            worker.ReportProgress((int) (1));
+            tempImage_1 = Opening(sourceImage, worker);
+            tempImage_2 = sourceImage;
             Color col;
             int R, G, B;
             for (int i = 0; i < sourceImage.Width; i++)
             {
-                worker.ReportProgress(66 + (int)(33*i/resultImage.Width));
+                worker.ReportProgress((int)((float)i/resultImage.Width*100));
                 for (int j = 0; j < sourceImage.Height; j++)
                 {
                     R = tempImage_1.GetPixel(i, j).R - tempImage_2.GetPixel(i, j).R;
@@ -44,5 +43,3 @@ namespace BevzukFiltres
         }
     }
 }
-
-

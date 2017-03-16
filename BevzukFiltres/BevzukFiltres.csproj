@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AcutanceFilter.cs" />
+    <Compile Include="BlackHatFilter.cs" />
     <Compile Include="BlurFilter.cs" />
     <Compile Include="BrightnessFilter.cs" />
     <Compile Include="DefinitionFilter.cs" />
@@ -72,6 +73,7 @@
     <Compile Include="SepiaFilter.cs" />
     <Compile Include="ShcharrFilter.cs" />
     <Compile Include="SobelFilter.cs" />
+    <Compile Include="TopHatFilter.cs" />
     <Compile Include="TransferringFilter.cs" />
     <Compile Include="WaveOneFilter.cs" />
     <Compile Include="WaveTwoFilter.cs" />
